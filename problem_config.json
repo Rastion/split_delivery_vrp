@@ -1,0 +1,44 @@
+{
+    "entry_point": "sdvrp_problem:SDVRPProblem",
+    "default_params": {
+      "instance_file": "instances/S51D1.sd"
+    },
+    "problem_type": "Split Delivery Vehicle Routing Problem",
+    "description": "In the SDVRP, a fleet of identical trucks (each with capacity Q) must deliver a single commodity to customers with given demands. Trucks start and end their routes at a common depot. Unlike the classic CVRP, deliveries may be split among trucks. The instance file follows a DIMACS-like format: the first line gives the number of customers and truck capacity; the second line gives customer demands; the remaining tokens provide the depot coordinates followed by customer coordinates. The objective is to minimize the total distance traveled, while ensuring that every customer is visited and served (i.e., the sum of delivered quantities meets or exceeds each customer's demand) and that no truck exceeds its capacity.",
+    "keywords": [
+      "sdvrp",
+      "vehicle routing",
+      "split delivery",
+      "optimization",
+      "logistics"
+    ],
+    "data_format": {
+      "instance_file": {
+        "format": "The instance file begins with two integers: the number of customers and the truck capacity. The next line contains the demands for each customer. Then two numbers for the depot coordinates, followed by two numbers per customer (their x and y coordinates)."
+      }
+    },
+    "decision_variables": {
+      "routes": {
+        "type": "list of lists of int",
+        "description": "A list where each element is the route (a sequence of customer indices) assigned to a truck."
+      },
+      "deliveries": {
+        "type": "list of lists of float",
+        "description": "A list where each element is a list of delivered quantities per customer by the corresponding truck. For a truck that does not visit a customer, the delivered quantity should be 0."
+      }
+    },
+    "objective": {
+      "type": "minimization",
+      "function": "Total Distance = Sum over used trucks of (depot to first customer + last customer to depot + distances between consecutive customers)",
+      "description": "Minimize the total distance traveled by all trucks, while satisfying the capacity constraints and ensuring that every customer's demand is met."
+    },
+    "solution_representation": "A dictionary with keys 'routes' and 'deliveries' representing the truck routes and the delivered quantities, respectively.",
+    "compatible_optimizers": [
+      "genetic_algorithm",
+      "simulated_annealing",
+      "particle_swarm",
+      "tabu_search",
+      "rl_optimizer"
+    ]
+  }
+  
