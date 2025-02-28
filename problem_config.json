@@ -3,13 +3,16 @@
     "default_params": {
       "instance_file": "instances/S51D1.sd"
     },
-    "problem_type": "Split Delivery Vehicle Routing Problem",
+    "creator": "Rastion",
+    "type": "problem",
+    "problem_name": "Split delivery vehicle routing problem",
     "description": "In the SDVRP, a fleet of identical trucks (each with capacity Q) must deliver a single commodity to customers with given demands. Trucks start and end their routes at a common depot. Unlike the classic CVRP, deliveries may be split among trucks. The instance file follows a DIMACS-like format: the first line gives the number of customers and truck capacity; the second line gives customer demands; the remaining tokens provide the depot coordinates followed by customer coordinates. The objective is to minimize the total distance traveled, while ensuring that every customer is visited and served (i.e., the sum of delivered quantities meets or exceeds each customer's demand) and that no truck exceeds its capacity.",
+    "link_to_dataset": "https://github.com/Rastion/split_delivery_vrp/blob/main/instances/S51D1.sd",
     "keywords": [
       "sdvrp",
       "vehicle routing",
       "split delivery",
-      "optimization",
+      "route-optimization",
       "logistics"
     ],
     "data_format": {
@@ -33,12 +36,8 @@
       "description": "Minimize the total distance traveled by all trucks, while satisfying the capacity constraints and ensuring that every customer's demand is met."
     },
     "solution_representation": "A dictionary with keys 'routes' and 'deliveries' representing the truck routes and the delivered quantities, respectively.",
-    "compatible_optimizers": [
-      "genetic_algorithm",
-      "simulated_annealing",
-      "particle_swarm",
-      "tabu_search",
-      "rl_optimizer"
+    "formulations": [
+      ""
     ]
   }
   
